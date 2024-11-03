@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html5</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url(993012.jpg);
+    background-position: center;
+    background-size: cover;
+    min-height: 100vh;
+    margin: 0;
+}
+
+#quiz-container, #result-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 9px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+}
+
+#options {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+}
+
+.option {
+    background-color:darkblue;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin: 5px 0;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.option:hover {
+    background-color: rgb(0, 181, 117);
+}
+
+#next-btn, #restart-btn {
+    padding: 10px 15px;
+    background-color: darkblue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#next-btn:hover, #restart-btn:hover {
+    background-color:rgb(255, 0, 157);
+}
+footer{
+    display: flex;
+}
+
+</style>
+<body>
+    <div id="quiz-container">
+        <h2 id="question">Html5 Quiz</h2>
+        <div id="options">
+            <button class="option">Option 1</button>
+            <button class="option">Option 2</button>
+            <button class="option">Option 3</button>
+            <button class="option">Option 4</button>
+            <button class="option">Option 5</button>
+            <button class="option">Option 6</button>
+            <button class="option">Option 7</button>
+            <button class="option">Option 8</button>
+            <button class="option">Option 9</button>
+            <button class="option">Option 10</button>
+            <button class="option">Option 11</button>
+            <button class="option">Option 12</button>
+            <button class="option">Option 13</button>
+            <button class="option">Option 14</button>
+            <button class="option">Option 15</button>
+        </div>
+        <button id="next-btn">Next Question</button>
+        <p>&copy;Francis heatherfeng</p>
+    </div>
+    <div id="result-container" style="display: none;">
+        <h2>Your Score: <span id="score"></span>/15</h2>
+        <button id="restart-btn">Restart Quiz</button>
+        
+    </div>
+    <script >
+  const quizData = [
+    {
+        question: "1. Which property we need to use for the space between words?",
+        options: ["space", "word-spacing", "word-space", "space-word"],
+        correct: "word-spacing"
+    },
+    {
+        question: "2. Where in HTML document should you include the code <!DOCTYPE html?",
+        options: ["body sectionnnn", "first line", "doesn't matter", "last line"],
+        correct: "first line"
+    },
+    {
+        question: "3. Open the abbreviation CSS?",
+        options: ["Cascading Style Sheets", "Computer Style Sheets", "Creative Style Sheet", "Canvas Styling Sytem"],
+        correct: "Cascading Style Sheets"
+    },
+    {
+        question: "4. How to force a word using CSS3?",
+        options: ["word-break: break-word;", "text-wrap: break-word;", "text-wrap: force;", "text-width: set"],
+        correct: "word-break: break-word;"
+    },
+    {
+        question: "5. How many types in CSS??",
+        options: ["2", "4", "1", "3", "5"],
+        correct: "3"
+    },
+    {
+        question: "6. Which CSS property is used to change the background image?",
+        options: ["background-image", "image", "background-img", "bg-image"],
+        correct: "background-image"
+    },
+    {
+        question: "7. How dou you tell the browser you are creating a styling section with an internal style sheet?",
+        options: ["<style></style>", "<styls type='css'></styls>", "<class type='text/css'></class>", "<style type='stylesheet'></style>"],
+        correct: "<style></style>"
+    },
+    {
+        question: "8. Which HTML attribute is used to define an inline style sheet?",
+        options: ["in-style", "style", "alt", "class"],
+        correct: "style"
+    },
+    {
+        question: "9. Inline css example?",
+        options: ["<div style='color-red'>", "<div style='color;red'>", "<link href='test.css' rel='stylesheet'>", "<div style='color:red'>"],
+        correct: "<div style='color:red'>"
+    },
+    {
+        question: "10. How to add text shadow using CSS3?",
+        options: ["font: shadowed 5px 5px 5px grey;", "font: shadow 5px 5px 5px grey;", "text-shadow: 5px 5px 5px grey;", "shadow: text 5px 5px 5px grey;"],
+        correct: "text-shadow: 5px 5px 5px grey;"
+    },
+    {
+        question: "11. How can you make a numbered list?",
+        options: ["<list>", "<dl>", "<ul>", "<ol>"],
+        correct: "<ol>"
+    },
+    {
+        question: "12. How do you make a list that lists its items with A,B,C...order?",
+        options: ["list-style-type:upper;", "list-style-type:capital;", "list-style-type:uppercase;", "list-style-type:upper-latin"],
+        correct: "list-style-type:upper;"
+    },
+    {
+        question: "13. How CSS3 been fully supported by all browsers?",
+        options: ["yes", "no"],
+        correct: "yes"
+    },
+    {
+        question: "14. How to resize a background image using CSS3?",
+        options: ["background-size: 80px 60px;", "background-position: 80px 60px;", "alpha-effect: bg-resize 80px 60px;", "none"],
+        correct: "background-size: 80px 60px;"
+    },
+    {
+        question: "15. You should save HTML files with which file extension?",
+        options: [".htm", ".index", ".html", ".webpage"],
+        correct: ".html"
+    }
+];
+
+let currentQuestion = 0;
+let score = 0;
+
+const questionEl = document.getElementById('question');
+const optionsEl = document.getElementById('options');
+const nextBtn = document.getElementById('next-btn');
+const scoreEl = document.getElementById('score');
+const resultContainer = document.getElementById('result-container');
+const quizContainer = document.getElementById('quiz-container');
+const restartBtn = document.getElementById('restart-btn');
+
+function loadQuestion() {
+    const currentQuizData = quizData[currentQuestion];
+    questionEl.textContent = currentQuizData.question;
+    optionsEl.innerHTML = '';
+    currentQuizData.options.forEach(option => {
+        const button = document.createElement('button');
+        button.classList.add('option');
+        button.textContent = option;
+        button.addEventListener('click', selectAnswer);
+        optionsEl.appendChild(button);
+    });
+}
+
+function selectAnswer(e) {
+    const selectedOption = e.target.textContent;
+    const correctOption = quizData[currentQuestion].correct;
+    
+    if (selectedOption === correctOption) {
+        score++;
+    }
+    
+    currentQuestion++;
+    if (currentQuestion < quizData.length) {
+        loadQuestion();
+    } else {
+        showResults();
+    }
+}
+
+function showResults() {
+    quizContainer.style.display = 'none';
+    resultContainer.style.display = 'block';
+    scoreEl.textContent = score;
+}
+
+function restartQuiz() {
+    score = 0;
+    currentQuestion = 0;
+    quizContainer.style.display = 'block';
+    resultContainer.style.display = 'none';
+    loadQuestion();
+}
+
+nextBtn.addEventListener('click', () => {
+    if (currentQuestion < quizData.length) {
+        loadQuestion();
+    }
+});
+
+restartBtn.addEventListener('click', restartQuiz);
+
+loadQuestion();
+
+  </script>
+</body>
+</html>

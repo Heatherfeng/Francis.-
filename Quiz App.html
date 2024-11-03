@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url(993012.jpg);
+    background-position: center;
+    background-size: cover;
+    min-height: 100vh;
+    margin: 0;
+}
+    p{
+        font-size: 30px;
+        font-weight: 600;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        color: darkblue;
+    }
+
+    button{
+        width: 90%;
+        padding-top: 10px;
+        margin-top: 5.2rem;
+        margin: auto;
+        display: flex;
+        height: 40px;
+        line-height: auto;
+        padding-top: 3rem 0;
+        border-radius: 7px;
+        border: 0;
+        cursor: pointer;
+        font-weight: 700;
+         color: white;
+        background-color: darkblue;
+        &:hover {
+    background-color:rgb(255, 0, 157);
+}
+    }
+    a{
+        color: white;
+        text-decoration: none;
+    } 
+    p{  margin: 0;
+        margin-top: 70px;
+        background-color: white;
+        text-align: center;
+        width: 300px;
+        background-position: center;
+        background-size: cover;
+        text-align: center;
+        border-radius: 10px;
+        height: auto;
+    }
+    .pa1{
+        margin-bottom: 10px;
+    }
+</style>
+<body>
+    <p id="demo"></p>
+ 
+    <script type="text/javascript">
+
+            let age = 10;
+            name = prompt('Enter your "NAME" to start this program');
+            age = prompt('Enter your "AGE"');
+            if(age <= 10){
+                document.getElementById('demo').innerHTML='You are too young so you are not allowed to join this program';
+            }
+            else if(age >= 81){
+                document.getElementById('demo').innerHTML='You are too old so you cant join this program';
+            }
+            else if(age >= 10){
+                document.getElementById('demo').innerHTML='Welcome ' + name + ' to our Quiz programs' +'<br>' + '   <button class="pa1"><a href="html.html">Continue With HTML</a></button>'+ '<button class="pa1"><a href="css.html">Continue With CSS</a></button>'+'<button class="pa1"><a href="java.html">Continue With Javascript</a></button>' ;
+            }
+
+            else{
+                document.getElementById('demo').innerHTML='Please try again type error';
+            }
+    </script>
+</body>
+</html>
